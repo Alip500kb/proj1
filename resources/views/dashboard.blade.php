@@ -9,6 +9,7 @@
 <body>
     <a href="/docs">Documentation</a>
     <a href="/dashboard">Dasboard</a>
+    <a href="/lab">Lab</a>
     <br>
     <h1>welcome to our laravel project dasboard</h1>
 </body>
