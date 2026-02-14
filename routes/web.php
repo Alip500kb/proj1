@@ -14,3 +14,6 @@ Route::get('/dashboard', function () {
 Route::get('/lab', function () {
     return view('lab');
 });
+Route::get('/profile', function () {
+    return view('profile');
+});
