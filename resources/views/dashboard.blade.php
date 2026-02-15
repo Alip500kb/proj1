@@ -7,8 +7,8 @@
     <title>Dasboard</title>
 </head>
 <body>
-    <a href="/docs">Documentation</a>
-    <a href="/dashboard">Dasboard</a>
+    <x-navbar></x-navbar>
+    <br>
     <br>
     <h1>welcome to our laravel project dasboard</h1>
 </body>
