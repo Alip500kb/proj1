@@ -8,15 +8,7 @@
     <link rel="stylesheet" href="/css/profile.css">
 </head>
 <body>
-    <!-- navbar -->
-    <nav class="navbars">
-        <div class="navbar">
-            <a href="/docs">Documentation</a>
-            <a href="/dashboard">Dasboard</a>
-            <a href="/lab" class="">Lab</a>
-            <a href="/profil" class="profil"><img src="asset/kelas.png" alt="" class="profilimg"></a>
-        </div>
-    </nav>
+    <x-navbar></x-navbar>
     <br>
     <br>
     <main>
