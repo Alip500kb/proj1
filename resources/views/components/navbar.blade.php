@@ -33,8 +33,7 @@
     color: #ffffff;
     text-decoration: none;
     font-size: 18px;
-    padding-left: 10px;
-    border-radius: 5px;
+    padding: 10px;
 }
 .navbars {
     position: fixed;
@@ -46,13 +45,16 @@
 }
 
 .active {
+    display:flex;
     justify-content: center;
+    align-items: center;
     background-color: gray;
     color: #ffffff;
     text-decoration: none;
     font-size: 18px;
-    padding-left: 10px;
-    border-radius: 5px;
+    padding: 0px 10px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
 </style>
