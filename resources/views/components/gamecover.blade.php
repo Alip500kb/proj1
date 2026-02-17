@@ -34,6 +34,7 @@
     text-align: center;
     down: 10px;
     margin: 0px;
+    color: white;
 }
 .shine {
     z-index: 3;
@@ -55,12 +56,17 @@
 .img:hover .shine {
     opacity: 1;
 }
+.apasi {
+    text-decoration: none;
+}
 </style>
+<a href="/dashboard/gamedesc/{{ $id }} " class="apasi">
 <div class="gamecover" >
     <div class="shine"></div>
     <img src="/asset/{{ $pathimg }}" alt="{{ $name }}" id="game-id-{{ $id }}">
     <h3 class="gametitle">{{$name}}</h3>
 </div>
+</a>
 <script>
     document.getElementById('game-id-{{ $id }}').addEventListener('mousemove', (e) => {
         const rect = document.getElementById('game-id-{{ $id }}').getBoundingClientRect();

@@ -21,7 +21,7 @@
         <x-gamecover
             :name="$list['gamename']"
             :pathimg="$list['imgcover']"
-            :id="$loop->index"
+            :id="$list['id']"
         />
     @endforeach
     </div>
