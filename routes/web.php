@@ -13,12 +13,12 @@ Route::get('/dashboard', function () {
     return view('dashboard', ['author' => 'Alip buah deligma'], ['gamelist' => Post::semua()]);
 });
 Route::get('dashboard/gamedesc/{id}', function ($id) {
-    $gamelists = Post::semua();
-    $post = Post::cari($id);
     if ($id == '6') {
-            return $post = 'a good person certainly';
+            return $post = 'a good thing certainly'; //custom hidden page
+        }elseif (!Post::cari($id)) {
+            return $post = 'this not better than index 6'; //bisa custom error page ygy
         }else {
-            return view('gamedesc', ['post' => $post]);
+            return view('gamedesc', ['post' => Post::cari($id)]); //permisi ini kenapa copilot suka ama 6 ngejek banget array ku cuman 5
         }
 
 });

@@ -37,9 +37,12 @@ class Post{
     ];
     }
     public static function cari($id):array{
-        return Arr::first(static::semua(), function ($hay) use ($id) {
-            return $hay['id'] == $id;
+        $kampang  = Arr::first(static::semua(), fn($hay) => $hay['id'] == $id );
 
-    });
+        if (!$kampang) {
+            $kampang = [];
+        }
+        return $kampang;
+
 }
 }
