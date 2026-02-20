@@ -12,6 +12,10 @@ h1 {
     flex-direction: row; /* agar menyamping */
     margin: 5px;
 }
-h2 {
-    
+.featured {
+    position: relative;
+    display: flex;
+    background-color: #454352;
+    width: 400px;
+    height: 200px;
 }
