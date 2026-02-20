@@ -56,6 +56,18 @@
     border-radius: 4px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
 }
+.search {
+    position: relative;
+    display: flex;
+    width: 150px;
+    height: 25px;
+}
+.search input {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+}
 
 </style>
 <!-- navbar -->
@@ -64,6 +76,9 @@
         <a href="/docs" class="{{ request()->is('docs') ? 'active' : 'idle'}}">Documentation</a>
         <a href="/dashboard" class="{{ request()->is('dashboard') ? 'active' : 'idle'}}">Dasboard</a>
         <a href="/lab" class="{{ request()->is('lab') ? 'active' : 'idle'}}">Lab</a>
+        <div class="search">
+            <input type="text">
+        </div>
         <a href="/profile" class="profil"><img src="asset/kelas.png" alt="" class="profilimg"></a>
     </div>
 </nav>
