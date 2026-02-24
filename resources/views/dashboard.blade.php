@@ -35,6 +35,14 @@
             </div>
         </div>
     </div>
+<div style="gap: 10px; display:flex; flex-wrap:wrap-reverse; position: relative; width: 800px; height: 200px; margin-top: 40px; left: 50%; transform: translateX(-50%);">
+    <p>Browse by Category</p>
+    @foreach (range(1,4) as $i)
+    <x-categoryslot></x-categoryslot>
+    @endforeach
+    
+</div>
+
     <h4>You may like</h4>
     <div class="last-played">
         @foreach ($gamelist as $list)
