@@ -17,8 +17,8 @@
         <div class="featuredcon">
             <p class = "featured-title">Featured and Hyped</p>
             <div class="featured">
-                <div style="position: absolute; width: 30px; height: 70px; left: -40px; background-color: #454352; transform:translateY(-50%); top: 50%;"></div>
-                <div style="position: absolute; width: 30px; height: 70px; right: -40px; background-color: #454352; transform:translateY(-50%); top: 50%;"></div>
+                <div class="arrowl" ></div>
+                <div class="arrowr" ></div>
                 <div class="utama"></div>
                 <div style="position: absolute; bottom: -20px; height: 10px; width: 180px; background-color: #73738d; left: 50%; transform: translateX(-50%);">
 
@@ -35,12 +35,16 @@
             </div>
         </div>
     </div>
-<div style="gap: 10px; display:flex; flex-wrap:wrap-reverse; position: relative; width: 800px; height: 200px; margin-top: 40px; left: 50%; transform: translateX(-50%);">
+<div style="position: relative; width: 800px; height: 220px; margin-top: 40px; left: 50%; transform: translateX(-50%);">
     <p>Browse by Category</p>
-    @foreach (range(1,4) as $i)
-    <x-categoryslot></x-categoryslot>
-    @endforeach
-    
+    <div style="position: absolute; width: 30px; height: 70px; left: -40px; background-color: #454352; transform:translateY(-50%); top: 50%;"></div>
+    <div style="position: absolute; width: 30px; height: 70px; right: -40px; background-color: #454352; transform:translateY(-50%); top: 50%;"></div>
+    <div style="gap: 10px; display:flex; flex-wrap:wrap-reverse; justify-content:center;">
+        @foreach (range(1,5) as $i)
+        <x-categoryslot></x-categoryslot>
+        @endforeach
+
+    </div>
 </div>
 
     <h4>You may like</h4>
