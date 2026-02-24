@@ -48,7 +48,6 @@ h1 {
     position: absolute;
     width: 300px;
     height: 150px;
-    background-color: yellow;
     left: 500px;
     top: 50%;
     transform: translateY(-50%);
@@ -84,4 +83,28 @@ h1 {
 .featured p {
     position: absolute;
     left: 520px;
+}
+.arrowl {
+    position: absolute;
+    width: 30px;
+    height: 70px;
+    left: -40px;
+    background-color: #454352;
+    transform:translateY(-50%);
+    top: 50%;
+}
+.arrowr {
+    position: absolute;
+    width: 30px;
+    height: 70px;
+    right: -40px;
+    background: linear-gradient(
+        225deg,
+        rgba(57, 57, 57, 0) 0%,
+        rgba(57, 57, 57, 0.5) 50%,
+        rgba(57, 57, 57, 1) 100%
+        );
+    background-color: #454352;
+    transform:translateY(-50%);
+    top: 50%;
 }
