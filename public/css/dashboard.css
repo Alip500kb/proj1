@@ -46,9 +46,27 @@ h1 {
     height: 300px;
     box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.527);
     transition: background-image 0.3s ease ;
+    z-index: 2;
 }
-.sub1:hover{
-    background-image: url("{{ asset('main/sub3/dirt2.png') }}");
+.usub1 {
+    z-index: 1;
+    opacity: 0;
+}
+.usub2 {
+    z-index: 1;
+    opacity: 0;
+}
+.usub3 {
+    z-index: 1;
+    opacity: 0;
+}
+.usub4 {
+    z-index: 1;
+    opacity: 0;
+}
+.usub1:has(.sub1:hover) {
+    opacity: 1;
+    z-index: 5;
 }
 .subcon{
     position: absolute;
@@ -86,7 +104,7 @@ h1 {
     right: 0;
     box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.527);
 }
-.featured p {
+.sip {
     position: absolute;
     left: 520px;
 }
@@ -113,4 +131,17 @@ h1 {
     background-color: #454352;
     transform:translateY(-50%);
     top: 50%;
+}
+.tag {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 2px;
+    left: 520px;
+    bottom: 35px;
+    width: 100px;
+    height: 30px;
+    background-color: #6f6986;
 }

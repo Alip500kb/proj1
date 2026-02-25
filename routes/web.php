@@ -16,6 +16,7 @@ Route::get('/dashboard', function () {
         'id' => $topgame->id,
         'game_name' => $topgame->game_name,
         'tag' => $topgame->tag,
+        'price' => $topgame->price,
         'main' => base64_encode($topgame->main),
         'sub1' => base64_encode($topgame->sub1),
         'sub2' => base64_encode($topgame->sub2),

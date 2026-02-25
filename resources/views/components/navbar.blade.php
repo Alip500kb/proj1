@@ -10,7 +10,7 @@
     transform: scale(1.2);
     opacity: 0.8;
     filter: brightness(1.2);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 .profil {
    position: absolute;
