@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/dashboard.css">
     <title>Dashboard</title>
+
 </head>
 <body>
 
@@ -19,16 +20,16 @@
             <div class="featured">
                 <div class="arrowl" ></div>
                 <div class="arrowr" ></div>
-                <div class="utama"></div>
+                <img src="data:{{ 'image/png' }};base64,{{ $topgame[0]['main'] }}" alt="main" class="utama">
                 <div style="position: absolute; bottom: -20px; height: 10px; width: 180px; background-color: #73738d; left: 50%; transform: translateX(-50%);">
 
                 </div>
-                <p style="font-size: 24px">$Game Title</p>
+                <p style="font-size: 24px">{{$topgame[0]['game_name']}}</p>
                 <div class="subcon">
-                    <div class="sub1"></div>
-                    <div class="sub2"></div>
-                    <div class="sub3"></div>
-                    <div class="sub4"></div>
+                    <img src="data:{{ 'image/png' }};base64,{{ $topgame[0]['sub1'] }}" alt="" class="sub1">
+                    <img src="data:{{ 'image/png' }};base64,{{ $topgame[0]['sub2'] }}" alt="" class="sub2">
+                    <img src="data:{{ 'image/png' }};base64,{{ $topgame[0]['sub3'] }}" alt="" class="sub3">
+                    <img src="data:{{ 'image/png' }};base64,{{ $topgame[0]['sub4'] }}" alt="" class="sub4">
                 </div>
                 <p style="font-size: 18px; bottom: 20px">$Promote tag</p>
                 <p style="bottom: -10px">$Price</p>
@@ -40,23 +41,15 @@
     <div style="position: absolute; width: 30px; height: 70px; left: -40px; background-color: #454352; transform:translateY(-50%); top: 50%;"></div>
     <div style="position: absolute; width: 30px; height: 70px; right: -40px; background-color: #454352; transform:translateY(-50%); top: 50%;"></div>
     <div style="gap: 10px; display:flex; flex-wrap:wrap-reverse; justify-content:center;">
-        @foreach (range(1,5) as $i)
-        <x-categoryslot></x-categoryslot>
+        @foreach ($category_list as $i)
+        <x-categoryslot
+        :id="$i['id']"
+        :name="$i['category_name']"
+        ></x-categoryslot>
         @endforeach
 
     </div>
 </div>
-
-    <h4>You may like</h4>
-    <div class="last-played">
-        @foreach ($gamelist as $list)
-        <x-gamecover
-            :name="$list['gamename']"
-            :pathimg="$list['imgcover']"
-            :id="$list['id']"
-        />
-    @endforeach
-    </div>
 
 </main>
 </body>

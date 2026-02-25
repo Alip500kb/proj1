@@ -10,6 +10,7 @@
     transform: scale(1.2);
     opacity: 0.8;
     filter: brightness(1.2);
+    transition: transform 0.3s ease;
 }
 .profil {
    position: absolute;
@@ -17,6 +18,7 @@
     right: 20px;
     width: 40px;
     height: 40px;
+    transition: transform 0.3s ease;
 }
 .navbar {
     top: 0px;
@@ -74,9 +76,9 @@
 <!-- navbar -->
 <nav class="navbars">
     <div class="navbar">
-        <a href="/docs" class="{{ request()->is('docs') ? 'active' : 'idle'}}">Documentation</a>
-        <a href="/dashboard" class="{{ request()->is('dashboard') ? 'active' : 'idle'}}">Dasboard</a>
-        <a href="/lab" class="{{ request()->is('lab') ? 'active' : 'idle'}}">Lab</a>
+        <a href="/dashboard" class="{{ request()->is('dashboard') ? 'active' : 'idle'}}">Dashboard</a>
+        <a href="/community" class="{{ request()->is('community') ? 'active' : 'idle'}}">Community</a>
+        <a href="/lib" class="{{ request()->is('lib') ? 'active' : 'idle'}}">Library</a>
         <div class="search">
             <input type="text">
         </div>

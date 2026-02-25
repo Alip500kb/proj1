@@ -5,7 +5,7 @@ use Illuminate\Support\Arr;
 
 class Post extends Model{
     protected $table = 'game-lists'; //nama table tentunya
-    protected $primaryKey = 'id'; 
+    protected $primaryKey = 'id';
 
     // public static function semua(){
     //     return [
