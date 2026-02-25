@@ -11,6 +11,6 @@
     <x-navbar></x-navbar>
     <br>
     <br>
-    <h1>welcome to our laravel project documentation page</h1>
+    <h1>welcome to our laravel project community page</h1>
 </body>
 </html>

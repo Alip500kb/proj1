@@ -1,16 +1,28 @@
 <?php
 
+use App\Models\category;
 use App\Models\Post;
+use App\Models\TopGames;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('profile');
 });
-Route::get('/docs', function () {
-    return view('docs');
+Route::get('/community', function () {
+    return view('community');
 });
 Route::get('/dashboard', function () {
-    return view('dashboard', ['author' => 'Alip buah deligma'], ['gamelist' => Post::all()]);
+    $topgame = TopGames::all()->map(fn($topgame) => [
+        'id' => $topgame->id,
+        'game_name' => $topgame->game_name,
+        'tag' => $topgame->tag,
+        'main' => base64_encode($topgame->main),
+        'sub1' => base64_encode($topgame->sub1),
+        'sub2' => base64_encode($topgame->sub2),
+        'sub3' => base64_encode($topgame->sub3),
+        'sub4' => base64_encode($topgame->sub4)
+    ]);
+    return view('dashboard', ['category_list' => category::all(), 'topgame' => $topgame]);
 });
 Route::get('dashboard/gamedesc/{id}', function ($id) {
     if ($id == '6') {
@@ -22,10 +34,16 @@ Route::get('dashboard/gamedesc/{id}', function ($id) {
         }
 
 });
+Route::get('category/{id}', function ($id) {
+    if (!category::find($id)) {
+        return $get_category = 'This category never added';
+    } else {
+        return view('category', ['get_category' => category::find($id)]);
+    }
+});
 
-
-Route::get('/lab', function () {
-    return view('lab');
+Route::get('/lib', function () {
+    return view('lib', ['gamelist' => Post::all()]);
 });
 Route::get('/profile', function () {
     return view('profile');

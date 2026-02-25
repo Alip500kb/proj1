@@ -1,4 +1,8 @@
-
+@props(
+    [
+        'id',
+        'name'
+    ])
 <style>
     .case {
         gap: 10px;
@@ -7,6 +11,8 @@
         height: 150px;
         background-color: gray;
         border-radius: 20px;
+        text-decoration: none;
+        color: white;
     }
     .catbox {
         z-index: 5;
@@ -45,11 +51,19 @@
     }
 </style>
 
-<div class="case">
+<a href="/category/{{ $id }}" class="case">
+    <img src="/asset/cover1.jpg" alt="" class="case">
+    <div class="emboss">
+    </div>
+    <div class="catbox">
+        <p style="text-decoration: none;">{{$name}}</p>
+    </div>
+</a>
+{{-- <div class="case">
     <img src="/asset/cover1.jpg" alt="" class="case">
     <div class="emboss">
     </div>
     <div class="catbox">
         <p>$category</p>
     </div>
-</div>
+</div> --}}

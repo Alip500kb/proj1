@@ -1,0 +1,9 @@
+body {
+    background-color: #171529;
+    color: white;
+}
+.last-played {
+    position: relative;
+    display: flex;
+    margin: 5px;
+}
