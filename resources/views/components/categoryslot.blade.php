@@ -10,7 +10,7 @@
         width: 150px;
         height: 150px;
         background-color: gray;
-        border-radius: 20px;
+        border-radius: 10px;
         text-decoration: none;
         color: white;
     }
@@ -27,6 +27,7 @@
         border-radius: 5px;
         width: 100px;
         height: 25px;
+        transition: bottom 0.3s ease-in-out;
     }
     .emboss {
         position: absolute;
@@ -37,7 +38,7 @@
         bottom: 0;
         width: 150px;
         height: 150px;
-        border-radius: 20px;
+        border-radius: 10px;
         background: linear-gradient(160deg,
         rgba(13, 129, 238, 0) 0%,
         rgba(13, 129, 238, 0.5) 50%,
@@ -49,10 +50,27 @@
     .case:hover .emboss{
         opacity: 0.5;
     }
+    .case:hover .catbox{
+        bottom: 10px;
+    }
+    .case img {
+        gap: 10px;
+        position: relative ;
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .case:hover .case img {
+        transform: scale(1.3);
+    }
 </style>
 
 <a href="/category/{{ $id }}" class="case">
-    <img src="/asset/cover1.jpg" alt="" class="case">
+    <div class="case" style="overflow: hidden;">
+        <img src="/asset/cover1.jpg" alt="">
+    </div>
+
     <div class="emboss">
     </div>
     <div class="catbox">
