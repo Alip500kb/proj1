@@ -14,16 +14,18 @@ return new class extends Migration
      *
      *
      *
-     
+
      */
     public function up(): void
     {
         Schema::create('game-lists', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->bigInteger('id')->unique();
             $table->string('gamename');
+            $table->string('genre');
             $table->text('desc');
-            $table->string('imgcover');
-            $table->timestamps();
+            $table->integer('price');
+            $table->string('version');
+            $table->timestamp('uploaded_at');
         });
     }
 
