@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Factories;
+
+use App\Models\GameList;
 use App\Models\Post; //dikarenakan nama model berbeda dengan factory
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -9,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class GameListFactory extends Factory
 {
-    protected $model = Post::class; //ingat ini untuk menghubungkan factory dengan model yang benar, jika nama model dengan factory berbeda
+    protected $model = GameList::class; //ingat ini untuk menghubungkan factory dengan model yang benar, jika nama model dengan factory berbeda
 
     protected $namePatt = [
         '{prefix} {noun}',
