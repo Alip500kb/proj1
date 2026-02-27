@@ -39,7 +39,7 @@ Route::get('category/{id}', function ($id) {
     if (!category::find($id)) {
         return $get_category = 'This category never added';
     } else {
-        return view('category', ['get_category' => category::find($id)]);
+        return view('category', ['gamelist' => Post::find(),'get_category' => category::find($id)]);
     }
 });
 
