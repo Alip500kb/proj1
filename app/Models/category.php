@@ -16,4 +16,8 @@ class category extends Model
     public $timestamps = false;
     protected $table = 'category_list';
     protected $primaryKey = 'id';
+
+    public static function sort($genre){
+        return collect(GameList::all())->where('genre', $genre);
+    }
 }

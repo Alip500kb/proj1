@@ -1,8 +1,10 @@
 <?php
 
 use App\Models\category;
+use App\Models\GameList;
 use App\Models\Post;
 use App\Models\TopGames;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -39,7 +41,8 @@ Route::get('category/{id}', function ($id) {
     if (!category::find($id)) {
         return $get_category = 'This category never added';
     } else {
-        return view('category', ['gamelist' => Post::find(),'get_category' => category::find($id)]);
+        $get_category = category::find($id);
+        return view('category', ['game_sorted' => category::sort($get_category['category_name']),'get_category' => category::find($id)]);
     }
 });
 
