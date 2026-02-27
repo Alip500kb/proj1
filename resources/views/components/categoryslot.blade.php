@@ -65,7 +65,6 @@
         transform: scale(1.3);
     }
 </style>
-
 <a href="/category/{{ $id }}" class="case">
     <div class="case" style="overflow: hidden;">
         <img src="/asset/cover1.jpg" alt="">

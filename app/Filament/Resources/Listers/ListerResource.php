@@ -13,12 +13,16 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
+use UnitEnum;
 
 class ListerResource extends Resource
 {
     protected static ?string $model = Lister::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    public static string|UnitEnum|null $navigationGroup = 'testing';
 
     public static function form(Schema $schema): Schema
     {
@@ -35,6 +39,16 @@ class ListerResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+    public static function getNavigationBadgeTooltip(): string|Htmlable|null
+    {
+        return 'lieur hideung';
     }
 
     public static function getPages(): array

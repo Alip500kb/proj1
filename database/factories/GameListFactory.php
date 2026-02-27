@@ -17,7 +17,9 @@ class GameListFactory extends Factory
         '{prefix} {noun}',
         '{prefix} {adjective} {noun}',
         '{prefix} {series}',
-        '{prefix} {edisi}'
+        '{prefix} {edisi}',
+        '{prefix} {adjective} {noun} {series}',
+        '{prefix} {adjective} {noun} {edisi}'
     ];
 
     protected $prefix = ['Rally','Shadow','Bending','Gather','Motorsport','Slice','Number'];
