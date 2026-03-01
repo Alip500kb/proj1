@@ -22,13 +22,7 @@ class GameListForm
                     ->required()
                     ->placeholder('Make The Game Name'),
                 Select::make('genre')
-                    ->options([
-                        'Action' => 'Action',
-                        'Adventure' => 'Adventure',
-                        'RPG' => 'RPG',
-                        'Simulation' => 'Simulation',
-                        'Open World' => 'Open World'
-                    ])
+                    ->relationship('category', 'category_name') // relasi langsung ke model category
                     -> native(false)
                     ->required(),
                 TextInput::make('desc'),
