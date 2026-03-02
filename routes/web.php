@@ -50,7 +50,7 @@ Route::get('category/{id}', function ($id) {
 //     return view('login');
 // });
 Route::get('/login', fn () => view('auth.login'))->name('login');
-Route::post('login', [AuthControl::class, 'login']);
+Route::post('/login', [AuthControl::class, 'login']);
 // Route::get('/lib', function () {
 //     return view('lib', ['gamelist' => Post::all()]);
 // });

@@ -15,7 +15,7 @@
             @csrf {{--ben iso post data mbuh bek ngopo --}}
         <div class="email">
             <p style="font-size: 17px; position:absolute; left: 0px">Email</p>
-            <input type="text" name="email" placeholder="Type Your E-Mail" required>
+            <input type="text" name="username" placeholder="Type Your E-Mail" required>
         </div>
         <div class="password">
             <p style=" font-size: 17px; position:absolute; left: 0px">Password</p>

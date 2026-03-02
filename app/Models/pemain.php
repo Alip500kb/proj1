@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class pemain extends Model
+class pemain extends Authenticatable
 {
     use HasFactory;
+    use Notifiable;
+
     protected $fillable = [
         'id',
         'username',
@@ -20,11 +24,12 @@ class pemain extends Model
     ];
     protected $table = 'pemains';
     protected static function newFactory()
+
     {
         return \Database\Factories\pemainFactory::new();
     }
     public function getAuthPasswordName(): string {
-        return 'password';
+        return $this->password;
     }
     public function getAuthIdentifierName(): string {
         return 'username';
