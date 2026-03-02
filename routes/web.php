@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthControl;
 use App\Models\category;
 use App\Models\GameList;
 use App\Models\Post;
@@ -45,7 +46,11 @@ Route::get('category/{id}', function ($id) {
         return view('category', ['game_sorted' => category::sort($get_category['category_name']),'get_category' => category::find($id)]);
     }
 });
-
+// Route::get('login', function () {
+//     return view('login');
+// });
+Route::get('/login', fn () => view('auth.login'))->name('login');
+Route::post('login', [AuthControl::class, 'login']);
 // Route::get('/lib', function () {
 //     return view('lib', ['gamelist' => Post::all()]);
 // });
