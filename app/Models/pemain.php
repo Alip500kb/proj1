@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticable;
+use Illuminate\Notifications\Notifiable;
 
-class pemain extends Model
+class Pemain extends Authenticable
 {
-    use HasFactory;
+    use HasFactory,Notifiable;
+    protected $hidden = ['id'];
     protected $fillable = [
         'id',
         'username',
@@ -19,14 +22,19 @@ class pemain extends Model
         'delete_reason'
     ];
     protected $table = 'pemains';
+    protected function casts()
+    {
+        return ['last_login_at' => 'datetime'];
+    }
     protected static function newFactory()
+
     {
         return \Database\Factories\pemainFactory::new();
     }
     public function getAuthPasswordName(): string {
-        return 'password';
+        return $this->password;
     }
     public function getAuthIdentifierName(): string {
-        return 'username';
+        return $this->username;
     }
 }

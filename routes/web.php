@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthControl;
+use App\Http\Controllers\AuthLoginKing;
 use App\Models\category;
 use App\Models\GameList;
 use App\Models\Post;
 use App\Models\TopGames;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
@@ -49,8 +51,13 @@ Route::get('category/{id}', function ($id) {
 // Route::get('login', function () {
 //     return view('login');
 // });
+// Route::middleware(['web'])->group(function () {
+//     Route::get('/login', [AuthLoginKing::class, 'showlogin'])->name('login');
+
+//     Route::post('/login', [AuthLoginKing::class, 'login']);
+// });
 Route::get('/login', fn () => view('auth.login'))->name('login');
-Route::post('login', [AuthControl::class, 'login']);
+Route::post('/login', [AuthLoginKing::class, 'login']);
 // Route::get('/lib', function () {
 //     return view('lib', ['gamelist' => Post::all()]);
 // });

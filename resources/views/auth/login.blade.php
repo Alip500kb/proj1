@@ -14,16 +14,30 @@
         <form action="/login" method="POST">
             @csrf {{--ben iso post data mbuh bek ngopo --}}
         <div class="email">
-            <p style="font-size: 17px; position:absolute; left: 0px">Email</p>
-            <input type="text" name="email" placeholder="Type Your E-Mail" required>
+            <p style="font-size: 17px; position:absolute; left: 0px">Username</p>
+            <input type="text" name="username" placeholder="Type Your Username" required>
         </div>
         <div class="password">
             <p style=" font-size: 17px; position:absolute; left: 0px">Password</p>
             <input type="password" name="password" placeholder="Enter your password" required>
         </div>
+        <div class="remember">
+            <input name="rememberme" type="checkbox" value="true" id="remember">
+            <label for="remember">Dont be a stranger next time?</label>
+        </div>
+        @if (session()->has('errorlogin'))
+        {{ session('errorking') }}
+        <div class="error">
+            <button type="submit">Login now</button>
+            <p style="position: absolute; color:rgb(245, 82, 82); bottom:-20px;">Your password or email might be wrong</p>
+        </div>
+        @else
         <div class="login-button">
             <button type="submit">Login now</button>
         </div>
+        <a href="/signup" style="transform:translateX(-50%); left:50%; color:black; position:absolute; bottom:76px; text-decoration:none;">Dont have a account?</a>
+        @endif
+
         </form>
     </div>
 </body>
