@@ -13,7 +13,12 @@
     <br>
     <main>
         <h1>welcome to our laravel project profile pages</h1>
+        <form action="/logout" method="POST">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
 
+        <p>Welcome Advanturer {{auth()->user()->username}}</p>
     </main>
 </body>
 </html>

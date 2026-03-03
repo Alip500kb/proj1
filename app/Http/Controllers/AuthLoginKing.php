@@ -21,16 +21,24 @@ class AuthLoginKing extends Controller
         'username' => 'required',
         'password' => 'required',
     ]);
-    $pemain = \App\Models\Pemain::where('username', $credentials['username'])->first();
-    if (!$pemain || !Hash::check($credentials['password'], $pemain->password)) {
-    // jika pemain false/null atau hash cek kredensial password dengan password hash berbeda/false
-    return back()->with('errorlogin', 'errorking');
+
+    if (Auth::guard('pemains')->attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->intended('/dashboard');
     }
-    Auth::guard('pemains')->login($pemain, $request->boolean('rememberme')); //me loginkan pemain dengan rememberme false
-    $request->session()->regenerate(); //memberikan session id baru jadi tidak ada exploit menggunakan session id
-    $pemain->last_login_at = Carbon::now(); //gae edit last_login_at
-    $pemain->save(); //save
-    return redirect()->intended('/dashboard');
+    return back()->with('errorlogin', 'errorking');
+    // $pemain = \App\Models\Pemain::where('username', $credentials['username'])->first();
+    // if (!$pemain || !Hash::check($credentials['password'], $pemain->password)) {
+    // // jika pemain false/null atau hash cek kredensial password dengan password hash berbeda/false
+    // return back()->with('errorlogin', 'errorking');
+    // }
+    // // dd($request->boolean('rememberme'));
+    // Auth::guard('pemains')->login($pemain, false); //me loginkan pemain dengan rememberme false
+    // $request->session()->regenerate(); //memberikan session id baru jadi tidak ada exploit menggunakan session id
+
+    // $pemain->last_login_at = Carbon::now(); //gae edit last_login_at
+    // $pemain->save(); //save
+    // return redirect()->intended('/dashboard');
 
     // Debug lengkap
     $pemain = \App\Models\Pemain::where('username', $credentials['username'])->first();
@@ -44,6 +52,15 @@ class AuthLoginKing extends Controller
         'input_password' => $credentials['password'],
         'attempt_result' => Auth::guard('pemains')->attempt($credentials),
     ]);
-}
 
+
+}
+    public function logout(Request $request)
+    {
+        // dd(Auth::guard('pemains')->user());
+        Auth::guard('pemains')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
+    }
 }

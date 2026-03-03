@@ -58,9 +58,8 @@ Route::get('category/{id}', function ($id) {
 // });
 Route::get('/login', fn () => view('auth.login'))->name('login');
 Route::post('/login', [AuthLoginKing::class, 'login']);
+Route::post('/logout', [AuthLoginKing::class, 'logout']);
 // Route::get('/lib', function () {
 //     return view('lib', ['gamelist' => Post::all()]);
 // });
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('/profile', fn () => view('profile'))->name('profile');

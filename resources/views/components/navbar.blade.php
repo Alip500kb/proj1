@@ -82,6 +82,11 @@
         <div class="search">
             <input type="text">
         </div>
-        <a href="/profile" class="profil"><img src="asset/kelas.png" alt="" class="profilimg"></a>
+        @auth
+            <a href="/profile" class="profil"><img src="asset/kelas.png" alt="" class="profilimg"></a>
+        @else
+        <a href="/login">Login</a>
+        @endauth
+
     </div>
 </nav>
