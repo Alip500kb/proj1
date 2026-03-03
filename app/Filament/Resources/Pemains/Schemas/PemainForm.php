@@ -20,7 +20,7 @@ class PemainForm
                 ->required(),
                 TextInput::make('password')
                 ->password()
-                ->dehydrateStateUsing(fn (string $state): string => Hash::make($state) )
+                ->dehydrateStateUsing(fn (string $state): string => bcrypt($state) )
                 ->required(),
                 DateTimePicker::make('created_at'),
                 DateTimePicker::make('updated_at'),

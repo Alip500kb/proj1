@@ -17,6 +17,7 @@ class GameListForm
             ->components([
                 TextInput::make('id')
                     ->numeric()
+                    ->unique()
                     ->required(),
                 TextInput::make('gamename')
                     ->required()

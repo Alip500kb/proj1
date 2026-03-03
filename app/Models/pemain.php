@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Pemain extends Authenticable
 {
-    use HasFactory,Notifiable;
+    use Notifiable;
     protected $hidden = ['id'];
     protected $fillable = [
         'id',
@@ -26,15 +26,7 @@ class Pemain extends Authenticable
     {
         return ['last_login_at' => 'datetime'];
     }
-    protected static function newFactory()
-
-    {
-        return \Database\Factories\pemainFactory::new();
-    }
-    public function getAuthPasswordName(): string {
-        return $this->password;
-    }
-    public function getAuthIdentifierName(): string {
-        return $this->username;
+    public function getAuthPassword(): string {
+        return $this->password; //semisal kolom yang berisis password nama kolom nya bukan password
     }
 }

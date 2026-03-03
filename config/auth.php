@@ -37,8 +37,12 @@ return [
         ],
         'pemains' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Pemain::class,
+            'model' => env('AUTH_MODEL', App\Models\Pemain::class),
         ],
+        // 'pemains' => [
+        //     'driver' => 'database',
+        //     'table' => 'pemains',
+        // ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
