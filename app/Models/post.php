@@ -27,8 +27,6 @@ class Post extends Model{
 
 
 
-
-
     // public static function semua(){
     //     return [
     //             [

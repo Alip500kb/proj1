@@ -23,10 +23,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'pemains' => [
-            'driver' => 'session',
-            'provider' => 'pemains',
-        ],
+        'pemains' => [  //buat guard baru untuk pemain
+        'driver' => 'session',
+        'provider' => 'pemains',
+    ],
+
     ],
 
     'providers' => [
@@ -38,7 +39,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Pemain::class,
         ],
-
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

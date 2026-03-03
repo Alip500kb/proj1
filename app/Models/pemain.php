@@ -27,6 +27,7 @@ class Pemain extends Authenticable
         return ['last_login_at' => 'datetime'];
     }
     protected static function newFactory()
+
     {
         return \Database\Factories\pemainFactory::new();
     }

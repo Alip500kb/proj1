@@ -8,31 +8,26 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthControl extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('web');
-        $this->middleware('guest:pemains')->except('logout');
-    }
-
     public function showlogin()
     {
         return view('auth.login');
     }
-
     public function login(Request $request)
     {
-        $kredensial = $request->validate(
-            [
-                'username' => ['required'],
-                'password' => ['required'],
-            ]
-        );
-        dd(Auth::guard('pemains')->attempt($kredensial));
+        // dd($request->all());
+        $kredensial = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        // $kredensial = $request->only('username','password');
         // dd($kredensial);
-        if (Auth::guard('pemains')->attempt($kredensial)) {
+        dd((Auth::guard('pemains')));
+        if(Auth::guard('pemains')->attempt($kredensial)) {
+            dd($kredensial);
             $request->session()->regenerate();
-            dd('berhasil');
-            return view('dashboard');
+
+            return redirect()->intended('/dashboard');
         }
     }
 
