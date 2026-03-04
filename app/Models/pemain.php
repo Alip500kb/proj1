@@ -10,7 +10,6 @@ use Illuminate\Notifications\Notifiable;
 class Pemain extends Authenticable
 {
     use Notifiable;
-    protected $hidden = ['id'];
     protected $fillable = [
         'id',
         'username',

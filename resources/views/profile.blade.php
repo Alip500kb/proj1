@@ -17,8 +17,7 @@
             @csrf
             <button type="submit">Logout</button>
         </form>
-
-        <p>Welcome Advanturer {{auth()->user()->username}}</p>
+        <p style="color: white; font-size: 25px;">Welcome {{auth()->user()->username}} enjoy your stay</p>
     </main>
 </body>
 </html>

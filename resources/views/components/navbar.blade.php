@@ -7,18 +7,54 @@
     height: 40px;
 }
 .profilimg:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     opacity: 0.8;
     filter: brightness(1.2);
     transition: transform 0.3s ease-in-out;
 }
 .profil {
    position: absolute;
+   display: flex;
+   align-items: center;
     border-radius: 50%;
     right: 20px;
     width: 40px;
     height: 40px;
     transition: transform 0.3s ease;
+}
+.profilimg {
+   position: absolute;
+   display: flex;
+   align-items: center;
+    border-radius: 50%;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+.profil p {
+    position: absolute;
+    text-decoration: none;
+    color: white;
+    transform: translateX(100px);
+    transition: transform 0.3s ease-in-out;
+
+}
+.profil:hover p {
+    transform: translateX(0px);
+}
+.profil img {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    filter: invert(100%);
+    transition: scale 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+}
+.profil:hover img {
+    transform: translateX(-50px);
+    transition: scale 0.3s ease-in-out;
+    scale: 0.7;
 }
 .navbar {
     top: 0px;
@@ -82,10 +118,13 @@
         <div class="search">
             <input type="text">
         </div>
-        @auth
-            <a href="/profile" class="profil"><img src="asset/kelas.png" alt="" class="profilimg"></a>
+        @auth('pemains') <!-- untuk bisa mendeteksi custom guard karena secara default ini merujuk ke uard web -->
+            <a href="/profile" class="profilimg"><img src="asset/kelas.png" alt="" class="profilimg"></a>
         @else
-        <a href="/login">Login</a>
+            <a class="profil" href="/login">
+                <img src="/asset/log-in.png" alt="">
+                <p>Login</p>
+            </a>
         @endauth
 
     </div>

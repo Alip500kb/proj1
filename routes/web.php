@@ -6,6 +6,7 @@ use App\Models\category;
 use App\Models\GameList;
 use App\Models\Post;
 use App\Models\TopGames;
+use GuzzleHttp\Middleware;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
@@ -56,10 +57,11 @@ Route::get('category/{id}', function ($id) {
 
 //     Route::post('/login', [AuthLoginKing::class, 'login']);
 // });
-Route::get('/login', fn () => view('auth.login'))->name('login');
-Route::post('/login', [AuthLoginKing::class, 'login']);
-Route::post('/logout', [AuthLoginKing::class, 'logout']);
+Route::get('/login', fn () => view('auth.login'))->name('login')->middleware('guest:pemains');
+Route::post('/login', [AuthLoginKing::class, 'login'])->middleware('guest:pemains');
+Route::post('/logout', [AuthLoginKing::class, 'logout'])->middleware('auth:pemains'); //karena menggunakan custom guard
 // Route::get('/lib', function () {
 //     return view('lib', ['gamelist' => Post::all()]);
 // });
-Route::get('/profile', fn () => view('profile'))->name('profile');
+Route::get('/profile', fn () => view('profile'))->name('profile')->middleware('auth:pemains');
+Route::get('signup', fn () => view('auth.signup'))->middleware('guest:pemains');
