@@ -64,7 +64,19 @@
 
     </div>
 </div>
-
+    @if (session()->has('succes'))
+    {{ session('loggedout') }}
+        <x-notif
+            :kondisi="['Success']"
+            :pesan="['You are Logged Out Goodbye.']"
+        />
+    @endif
+    @if (session()->has('succeslogin'))
+        <x-notif
+            :kondisi="['Success']"
+            :pesan="['You are in party now!']"
+        />
+    @endif
 </main>
 </body>
 </html>

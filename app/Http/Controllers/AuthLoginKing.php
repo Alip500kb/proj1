@@ -21,12 +21,12 @@ class AuthLoginKing extends Controller
         'username' => 'required',
         'password' => 'required',
     ]);
-
-    if (Auth::guard('pemains')->attempt($credentials)) {
-        $request->session()->regenerate();
-        return redirect()->intended('/dashboard');
-    }
+    if (!Auth::guard('pemains')->attempt($credentials)) {
     return back()->with('errorlogin', 'errorking');
+    }
+    Auth::guard('pemains')->attempt($credentials);
+    $request->session()->regenerate();
+    return redirect()->intended('/dashboard')->with('succeslogin', 'loginsucces');
     // $pemain = \App\Models\Pemain::where('username', $credentials['username'])->first();
     // if (!$pemain || !Hash::check($credentials['password'], $pemain->password)) {
     // // jika pemain false/null atau hash cek kredensial password dengan password hash berbeda/false
@@ -40,27 +40,12 @@ class AuthLoginKing extends Controller
     // $pemain->save(); //save
     // return redirect()->intended('/dashboard');
 
-    // Debug lengkap
-    $pemain = \App\Models\Pemain::where('username', $credentials['username'])->first();
-
-    dd([
-        'user_found' => $pemain ? true : false,
-        'user_data' => $pemain,
-        'password_in_db' => $pemain?->password,
-        'password_length' => $pemain ? strlen($pemain->password) : 0,
-        'hash_check' => $pemain ? Hash::check($credentials['password'], $pemain->password) : null,
-        'input_password' => $credentials['password'],
-        'attempt_result' => Auth::guard('pemains')->attempt($credentials),
-    ]);
-
-
 }
     public function logout(Request $request)
     {
-        // dd(Auth::guard('pemains')->user());
-        Auth::guard('pemains')->logout();
+        Auth::guard('pemains')->logout(); //untuk logout harus spesifik ke guard nya dahulu
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/dashboard')->with('succes', 'loggedout');
     }
 }
