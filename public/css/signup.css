@@ -66,7 +66,7 @@ p {
     height: 70px;
     left: 50%;
     transform: translateX(-50%);
-    top: 284px;
+    top: 286px;
 }
 .password input {
     font-size: 17px;
@@ -97,6 +97,16 @@ p {
     border: 2px solid rgba(5, 102, 206, 0.596);
     outline: none;
 }
+.confpass input:focus {
+    box-shadow: 0 0 0 2px rgba(5, 102, 206, 0.596);
+    border: 2px solid rgba(5, 102, 206, 0.596);
+    outline: none;
+}
+.errs:focus {
+    box-shadow: 0 0 0 2px rgba(206, 5, 49, 0.596);
+    border: 2px solid rgba(206, 5, 49, 0.596);
+    outline: none;
+}
 .login-button {
     position: absolute;
     display: flex;
@@ -125,18 +135,6 @@ p {
     width: 100%;
     height: 100%;
     cursor: pointer;
-}
-.remember {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    bottom: 200px;
-    left: 75px;
-}
-.remember input {
-    scale: 1.5;
-    margin-right: 11px;
-    margin-bottom: 0;
 }
 .error {
     position: absolute;

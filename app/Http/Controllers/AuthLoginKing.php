@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pemain;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -23,6 +25,10 @@ class AuthLoginKing extends Controller
     ]);
     if (!Auth::guard('pemains')->attempt($credentials)) {
     return back()->with('errorlogin', 'errorking');
+    } elseif (Auth::guard('administrator')->attempt($credentials)) {
+        Auth::guard('administrator')->attempt($credentials);
+        $request->session()->regenerate();
+        return redirect()->intended('/admin');
     }
     Auth::guard('pemains')->attempt($credentials);
     $request->session()->regenerate();
@@ -47,5 +53,36 @@ class AuthLoginKing extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/dashboard')->with('succes', 'loggedout');
+    }
+    public function signup(Request $request)
+    {
+        $kredensial = $request->validate(
+            [
+                'username' => 'required|string|max:32|unique:pemains,username', //unique:nama tabel,kolom
+                'password' => 'required|string|min:8',
+                'confpass' => 'required|string|min:8',
+            ]
+        );
+
+        if ($kredensial['password'] != $kredensial['confpass']) {
+            return back()->with('error', 'notmatch');
+        }
+
+        do {
+            $code = random_int(1, 10000);
+        } while (Pemain::where('id', $code)->exists()); //exists untuk mengecek apakah value itu ada
+
+        $pemain = Pemain::create([
+            'id' => $code,
+            'username' => $kredensial['username'],
+            'password' => Hash::make($kredensial['password'])
+        ]);
+
+        // Auth::guard('pemains')->login($pemain);
+        $pemain = \App\Models\Pemain::where('username', $kredensial['username'])->first();
+        Auth::guard('pemains')->login($pemain, false); // note yourself jangan pernah lupa menggunakan remember
+        $request->session()->regenerate();
+
+        return redirect('/dashboard')->with('success', 'welcome bro');
     }
 }
