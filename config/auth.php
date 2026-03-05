@@ -26,7 +26,11 @@ return [
         'pemains' => [  //buat guard baru untuk pemain
         'driver' => 'session',
         'provider' => 'pemains',
-    ],
+        ],
+        'administrator' => [
+            'driver' => 'session',
+            'provider' => 'administrator' // nama table
+            ]
 
     ],
 
@@ -39,6 +43,11 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Pemain::class),
         ],
+        'administrator' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\administrator::class),
+        ],
+
         // 'pemains' => [
         //     'driver' => 'database',
         //     'table' => 'pemains',

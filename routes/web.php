@@ -65,3 +65,4 @@ Route::post('/logout', [AuthLoginKing::class, 'logout'])->middleware('auth:pemai
 // });
 Route::get('/profile', fn () => view('profile'))->name('profile')->middleware('auth:pemains');
 Route::get('signup', fn () => view('auth.signup'))->middleware('guest:pemains');
+Route::post('/signup', [AuthLoginKing::class, 'signup'])->middleware('guest:pemains');

@@ -77,6 +77,12 @@
             :pesan="['You are in party now!']"
         />
     @endif
+    @if (session()->has('success'))
+        <x-notif
+            :kondisi="['Success']"
+            :pesan="['Another user. here ya']"
+        />
+    @endif
 </main>
 </body>
 </html>
