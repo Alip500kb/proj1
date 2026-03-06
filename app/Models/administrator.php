@@ -25,4 +25,8 @@ class administrator extends Authenticatable implements FilamentUser
     {
         return true;
     }
+    public function getAuthIdentifier(): string
+    {
+        return $this->username; //untuk filament agar memberitahukan kalau formatnya username bukan email
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\administrator;
 use App\Models\Pemain;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -23,16 +24,21 @@ class AuthLoginKing extends Controller
         'username' => 'required',
         'password' => 'required',
     ]);
-    if (!Auth::guard('pemains')->attempt($credentials)) {
-    return back()->with('errorlogin', 'errorking');
-    } elseif (Auth::guard('administrator')->attempt($credentials)) {
-        Auth::guard('administrator')->attempt($credentials);
-        $request->session()->regenerate();
-        return redirect()->intended('/admin');
-    }
+
+    if (Auth::guard('pemains')->attempt($credentials)) {
     Auth::guard('pemains')->attempt($credentials);
     $request->session()->regenerate();
     return redirect()->intended('/dashboard')->with('succeslogin', 'loginsucces');
+
+    } elseif (Auth::guard('administrator')->attempt($credentials)) {
+        $sidamin = \App\Models\administrator::where('username', $credentials['username'])->first();
+        Auth::guard('administrator')->login($sidamin, false);
+        // dd(Auth::guard('administrator')->check());
+        $request->session()->regenerate();
+        return redirect()->intended('/admin');
+    }
+    return back()->with('errorlogin', 'errorking');
+
     // $pemain = \App\Models\Pemain::where('username', $credentials['username'])->first();
     // if (!$pemain || !Hash::check($credentials['password'], $pemain->password)) {
     // // jika pemain false/null atau hash cek kredensial password dengan password hash berbeda/false
@@ -79,7 +85,7 @@ class AuthLoginKing extends Controller
         ]);
 
         // Auth::guard('pemains')->login($pemain);
-        $pemain = \App\Models\Pemain::where('username', $kredensial['username'])->first();
+        $pemain = \App\Models\Pemain::where('username', $kredensial['username'])->first(); //ini  harus karena formatnya array dan bisa digunakan untuk login
         Auth::guard('pemains')->login($pemain, false); // note yourself jangan pernah lupa menggunakan remember
         $request->session()->regenerate();
 

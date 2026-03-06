@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\GameLists\Schemas;
 
+use App\Models\category;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -23,8 +24,10 @@ class GameListForm
                     ->required()
                     ->placeholder('Make The Game Name'),
                 Select::make('genre')
-                    ->relationship('category', 'category_name') // relasi langsung ke model category
-                    -> native(false)
+                    ->label('genre')
+                    ->options(category::pluck('category_name', 'category_name'))
+                    // ->relationship('category', 'category_name') // relasi langsung ke model category
+                    // -> native(false)
                     ->required(),
                 TextInput::make('desc'),
                 TextInput::make('price')
