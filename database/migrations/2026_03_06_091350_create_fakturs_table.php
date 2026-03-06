@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('administrators', function (Blueprint $table) {
-            $table->bigInteger('id');
-            $table->string('username');
-            $table->string('password');
-            $table->timestamp('last_login_at')->nullable();
+        Schema::create('fakturs', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->integer('id_barang');
+            $table->integer('pembeli');
+            $table->integer('qty');
+            $table->integer('harga_total');
+            $table->timestamp('waktu_pembelian');
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('administrators');
+        Schema::dropIfExists('fakturs');
     }
 };

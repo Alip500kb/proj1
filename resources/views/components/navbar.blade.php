@@ -118,7 +118,7 @@
         <div class="search">
             <input type="text">
         </div>
-        @auth('pemains') <!-- untuk bisa mendeteksi custom guard karena secara default ini merujuk ke uard web -->
+        @auth('pemains','administrator') <!-- untuk bisa mendeteksi custom guard karena secara default ini merujuk ke uard web -->
             <a href="/profile" class="profilimg"><img src="asset/kelas.png" alt="" class="profilimg"></a>
         @else
             <a class="profil" href="/login">

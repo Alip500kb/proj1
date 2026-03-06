@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\administrator;
 use App\Models\category;
 use App\Models\GameList;
+use App\Models\Pemain;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,5 +28,15 @@ class DatabaseSeeder extends Seeder
         ]);
         GameList::factory()->count(50)->create();
         category::factory()->count(5)->create();
+        administrator::create([
+            'id' => '1',
+            'username' => 'admin',
+            'password' => Hash::make('admin')
+        ]);
+        Pemain::create([
+            'id' => '1',
+            'username' => 'pemain',
+            'password' => Hash::make('pemain')
+        ]);
     }
 }
