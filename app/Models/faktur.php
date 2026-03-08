@@ -29,4 +29,8 @@ class faktur extends Model
         return $this->belongsTo(Pemain::class,'pembeli', 'id');
                                 //model target,nilai local yang akan dicocokan, nilai pada target yg akan dicocokan
     }
+    public function namaproduk():BelongsTo
+    {
+        return $this->belongsTo(GameList::class, 'id_barang', 'id');
+    }
 }

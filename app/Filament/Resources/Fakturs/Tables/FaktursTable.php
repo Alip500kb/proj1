@@ -19,7 +19,9 @@ class FaktursTable
                 TextColumn::make('id')
                 ->sortable()
                 ->toggleable(),
-                TextColumn::make('id_barang'),
+                TextColumn::make('namaproduk.gamename')
+                ->label('Barang')
+                ->searchable(),
                 TextColumn::make('datapembeli.username')
                 ->label('Pembeli')
                 ->searchable(),
@@ -27,7 +29,8 @@ class FaktursTable
                 TextColumn::make('harga_total')
                 ->money('IDR'),
                 TextColumn::make('waktu_pembelian')
-                    ->dateTime(),
+                    ->dateTime()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

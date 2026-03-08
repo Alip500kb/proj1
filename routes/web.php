@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthControl;
 use App\Http\Controllers\AuthLoginKing;
+use App\Http\Controllers\buysys;
 use App\Models\category;
 use App\Models\GameList;
 use App\Models\Post;
@@ -67,5 +68,8 @@ Route::get('/profile', fn () => view('profile'))->name('profile')->middleware('a
 Route::get('signup', fn () => view('auth.signup'))->middleware('guest:pemains');
 Route::post('/signup', [AuthLoginKing::class, 'signup'])->middleware('guest:pemains');
 Route::get('checkout/{id}', function ($id) {
-    return view('checkout', ['game' => GameList::find('id', $id)]);
-});
+    // dd(GameList::find($id));
+    return view('checkout', ['game' => GameList::find($id)]);
+})->middleware('auth:pemains');
+// Route::get('buy/{id}', [buysys:class, 'buyitem']);
+Route::post('/buy', [buysys::class, 'buyitem'])->middleware('auth:pemains');
