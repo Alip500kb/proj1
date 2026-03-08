@@ -20,7 +20,6 @@
     :id="[$g['id']]"
     :gamename="[$g['gamename']]"
     />
-        <p>         Category : {{$g['genre']}}</p>
         <p>         Description : {{$g['desc']}}</p>
         <p>         Price : Rp. {{number_format($g['price'],0,',','.')}}</p>
         <p>         Version : {{$g['version']}}</p>

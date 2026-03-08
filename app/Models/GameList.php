@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GameList extends Model
@@ -30,5 +31,14 @@ class GameList extends Model
 
     public function category() {
         return $this->belongsTo(category::class);
+    }
+    /**
+     * Get all of the comments for the GameList
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sendgametofaktur(): HasMany
+    {
+        return $this->hasMany(faktur::class, 'id_barang', 'id');
     }
 }
