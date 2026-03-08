@@ -19,7 +19,7 @@ class FakturResource extends Resource
 {
     protected static ?string $model = Faktur::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::CreditCard;
 
     protected static string|UnitEnum|null $navigationGroup = 'History';
     public static function form(Schema $schema): Schema
@@ -43,8 +43,8 @@ class FakturResource extends Resource
     {
         return [
             'index' => ListFakturs::route('/'),
-            'create' => CreateFaktur::route('/create'),
-            'edit' => EditFaktur::route('/{record}/edit'),
+            // 'create' => CreateFaktur::route('/create'),
+            // 'edit' => EditFaktur::route('/{record}/edit'),
         ];
     }
 }
