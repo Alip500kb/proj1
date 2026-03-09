@@ -17,17 +17,24 @@
             <p>Community Chat</p>
         </div>
         {{-- isi chat disini --}}
-        <div class="chat-box">
-            @for ($i = 0; $i < 10; $i++)
-                <div class="chat" style="background-color: rgb({{ rand(50,255) }}, {{ rand(0,255) }}, {{ rand(80,255) }})">
-                <p style="position:relative;">JKW 175  :</p>
-                <p style="position: relative;">Hutang ku tolong dilunasin ya wok.</p>
+        <div class="chat-box" wire::poll.3s="autoload">
+            {{-- @dd($chats) --}}
+            @foreach ($chats as $c)
+                <div class="chat">
+                <p style="position:relative; font-size:18px;">{{ Str::upper($c['username'])  }}  :</p>
+                <p style="position: relative; font-size:16px;   ">{{ $c['text'] }}</p>
                 </div>
-            @endfor
-
+            @endforeach
 
         </div>
-
     </div>
+    <form action="/community/sendchat" method="POST">
+        @csrf
+    <div class="write">
+        <input name="teks" type="text" placeholder="chat as {{ auth()->user()->username }}" required>
+        <button type="submit"><x-heroicon-o-paper-airplane/></button>
+    </div>
+    </form>
+
 </body>
 </html>
