@@ -3,21 +3,23 @@
 use App\Http\Controllers\AuthControl;
 use App\Http\Controllers\AuthLoginKing;
 use App\Http\Controllers\buysys;
+use App\Http\Controllers\chatsys;
 use App\Models\category;
+use App\Models\community;
 use App\Models\GameList;
+use App\Models\Pemain;
 use App\Models\Post;
 use App\Models\TopGames;
 use GuzzleHttp\Middleware;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('profile');
 });
-Route::get('/community', function () {
-    return view('community');
-});
+
 Route::get('/dashboard', function () {
     // $topgame = TopGames::all()->map(fn($topgame) => [
     //     'id' => $topgame->id,
@@ -73,3 +75,12 @@ Route::get('checkout/{id}', function ($id) {
 })->middleware('auth:pemains');
 // Route::get('buy/{id}', [buysys:class, 'buyitem']);
 Route::post('/buy', [buysys::class, 'buyitem'])->middleware('auth:pemains');
+
+Route::post('/community/sendchat', [chatsys::class, 'send'])->middleware('auth:pemains');
+Route::get('/community', function () {
+    return view('community', ['chats' => community::all()->map(fn($chats) => [
+        'id' => Hash::make($chats->id),
+        'username' => (Pemain::where('id', $chats['user_id'])->first())['username'], //ingat harus menggunakan first untuk mencari
+        'text' => $chats->text
+    ])]);
+})->middleware('auth:pemains');
