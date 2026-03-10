@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\faktur;
 use App\Models\GameList;
+use App\Models\ulasan;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
 class buysys extends Controller
 {
     public function buyitem(Request $request)
     {
-        // dd($request->all());
         $id = $request->validate([
             'product' => 'required'
         ]);
@@ -33,6 +34,28 @@ class buysys extends Controller
         ]);
         return back()->with('success','sukses bos');
         // dd($fakturs);
+    }
+
+    public function ulasan(Request $request)
+    {
+        // dd(auth('pemains')->user()->username);
+        $ulasan = $request->validate([
+            'rating',
+            'ulasan'
+        ]);
+
+        do {
+            $id = rand(63, 6363636363);
+        } while (ulasan::where('id', $id)->exists());
+
+        ulasan::create([
+            'id' => $id,
+            'user' => auth('pemains')->user()->username,
+            'rating' => $request['rating'],
+            'ulasan' => $request['ulasan'],
+            'product_id' => $request['product_id']
+        ]);
+        return back();
     }
 
 }

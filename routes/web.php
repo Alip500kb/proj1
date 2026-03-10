@@ -10,6 +10,7 @@ use App\Models\GameList;
 use App\Models\Pemain;
 use App\Models\Post;
 use App\Models\TopGames;
+use App\Models\ulasan;
 use GuzzleHttp\Middleware;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Arr;
@@ -71,7 +72,7 @@ Route::get('signup', fn () => view('auth.signup'))->middleware('guest:pemains');
 Route::post('/signup', [AuthLoginKing::class, 'signup'])->middleware('guest:pemains');
 Route::get('checkout/{id}', function ($id) {
     // dd(GameList::find($id));
-    return view('checkout', ['game' => GameList::find($id)]);
+    return view('checkout', ['game' => GameList::find($id), 'ulasan' => ulasan::where('product_id', $id)->get()]);
 })->middleware('auth:pemains');
 // Route::get('buy/{id}', [buysys:class, 'buyitem']);
 Route::post('/buy', [buysys::class, 'buyitem'])->middleware('auth:pemains');
@@ -84,3 +85,4 @@ Route::get('/community', function () {
         'text' => $chats->text
     ])]);
 })->middleware('auth:pemains');
+Route::post('/ulas', [buysys::class, 'ulasan'])->middleware('auth:pemains');
